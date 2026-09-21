@@ -412,14 +412,20 @@ body { line-height: 1.5; font-size: 16px; font-family: 'Poppins', sans-serif; }
 
 .portfolio .portfolio-item-inner .portfolio-img .view-project {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #fff;
     font-size: 20px;
     opacity: 0;
     transition: all 0.5s ease;
     z-index: 2;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .portfolio .portfolio-item-inner:hover .portfolio-img .view-project {
@@ -520,8 +526,10 @@ body { line-height: 1.5; font-size: 16px; font-family: 'Poppins', sans-serif; }
         cursor: pointer;
         transition: all .3s ease;
         border-radius: 50%;
+        box-shadow: 0 0 10px rgba(48, 46, 77, .2);
     }
         .style-switcher .s-icon i { line-height: 40px; }
+        .style-switcher .s-icon:hover { background: var(--skin-color); color: #fff; border-color: var(--skin-color); }
     .style-switcher .style-switcher-toggler { top: 0; }
     .style-switcher .day-night { top: 55px; }
     .style-switcher h4 { margin: 0 0 10px; color: var(--text-black700); font-size: 16px; font-weight: 600; text-transform: capitalize; }
@@ -580,5 +588,81 @@ color-5.css
 }
 
 .download-cv-btn {
-    // ... existing code ...
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: 1px solid var(--skin-color);
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: transparent;
+    color: var(--text-black-900);
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+    animation: glowing 2s infinite;
+}
+
+@keyframes glowing {
+    0% {
+        box-shadow: 0 0 5px var(--skin-color);
+    }
+    50% {
+        box-shadow: 0 0 20px var(--skin-color);
+    }
+    100% {
+        box-shadow: 0 0 5px var(--skin-color);
+    }
+}
+
+.download-cv-btn:hover {
+    background: var(--skin-color);
+    box-shadow: 0 0 30px 5px var(--skin-color);
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    color: #fff;
+    animation: none;
+}
+
+.download-cv-btn::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    -webkit-transform: skewX(-20deg);
+    -moz-transform: skewX(-20deg);
+    -ms-transform: skewX(-20deg);
+    -o-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+    from {
+        opacity: 0;
+        left: 0%;
+    }
+    50% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        left: 100%;
+    }
+}
+
+.download-cv-btn:active {
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: box-shadow 0.2s ease-in;
+    -moz-transition: box-shadow 0.2s ease-in;
+    transition: box-shadow 0.2s ease-in;
 }
