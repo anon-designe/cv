@@ -388,7 +388,9 @@ function showSection(element){
     for( let i = 0; i < totalSection; i++){ allSection[i].classList.remove('active'); }
 
     const target = element.getAttribute("href").split("#")[1];
-    document.querySelector('#' + target).classList.add('active');
+    const section = document.querySelector('#' + target);
+    section.classList.add('active');
+    section.scrollTop = 0;
 
     triggerSectionAnimations(target);
 }
