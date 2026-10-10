@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,12 +27,24 @@
             </div>
 
             <ul class="nav">
-                <li><a href="#home" class="active"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="#about" ><i class="fa fa-user"></i>About</a></li>
-                <li><a href="#services" ><i class="fa fa-list"></i>Services</a></li>
-                <li><a href="#portfolio" ><i class="fa fa-briefcase"></i>Portfolio</a></li>
-                <li><a href="#contact" ><i class="fa fa-comments"></i>Contact</a></li>
+                <li><a href="#home" class="active"><i class="fa fa-home"></i><span data-i18n="nav.home">Home</span></a></li>
+                <li><a href="#about" ><i class="fa fa-user"></i><span data-i18n="nav.about">About</span></a></li>
+                <li><a href="#services" ><i class="fa fa-list"></i><span data-i18n="nav.services">Services</span></a></li>
+                <li><a href="#portfolio" ><i class="fa fa-briefcase"></i><span data-i18n="nav.portfolio">Portfolio</span></a></li>
+                <li><a href="#contact" ><i class="fa fa-comments"></i><span data-i18n="nav.contact">Contact</span></a></li>
             </ul>
+
+            <div class="language-switcher dropup" id="langDropup">
+                <button class="lang-toggle" id="langToggle" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-globe"></i>
+                    <span class="lang-current">EN</span>
+                    <i class="fa fa-chevron-up lang-arrow"></i>
+                </button>
+                <div class="lang-menu" id="langMenu" role="menu">
+                    <button class="lang-btn active" data-lang="en" role="menuitem"><span class="lang-code">EN</span> English</button>
+                    <button class="lang-btn" data-lang="ar" role="menuitem"><span class="lang-code">ع</span> العربية</button>
+                </div>
+            </div>
         </div>
 
         <div class="main-content">
@@ -40,12 +52,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="home-info padd-15">
-                            <h3 class="hello">Hello, my name is <span class="name">Younis Adel</span></h3>
-                            <h3 class="profession">I'm a <span class="typing">Web Designer</span></h3>
-                            <p>I'm a web designer with extensive experience for over 10 years. My experience is to create website designs, graphic designs and much more...</p>
+                            <h3 class="hello"><span data-i18n="home.hello">Hello, my name is</span> <span class="name" data-i18n="home.name">Younis Adel</span></h3>
+                            <h3 class="profession"><span data-i18n="home.profession_prefix">I'm a</span> <span class="typing">Web Designer</span></h3>
+                            <p data-i18n="home.description">I'm a web designer with extensive experience for over 10 years. My experience is to create website designs, graphic designs and much more...</p>
                             <div class="buttons-container">
-                                <button class="download-cv-btn" onclick="window.location.href='CV - Younis Adel.pdf'">Download CV</button>
-                                <button class="download-cv-btn website-btn" onclick="window.location.href='https://anon-designe.github.io/'">WebSite</button>
+                                <button class="download-cv-btn" onclick="window.open('CV - Younis Adel.pdf', '_blank')" data-i18n="home.open_cv">Open My CV</button>
+                                <button class="download-cv-btn website-btn" onclick="window.location.href='https://anon-designe.github.io/'" data-i18n="home.website">WebSite</button>
                             </div>
                         </div>
 
@@ -60,7 +72,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="section-title padd-15">
-                            <h2>About me</h2>
+                            <h2 data-i18n="about.title">About me</h2>
                         </div>
                     </div>
 
@@ -68,8 +80,8 @@
                         <div class="about-content padd-15">
                             <div class="row">
                                 <div class="about-text padd-15">
-                                    <h3>I'm Younis Adel and <span>Web Designer</span></h3>
-                                    <p>As a web designer, I'm specialized in creating visually appealing websites that not only captivate visitors but also provide seamless navigation and functionality.  I continuously seek inspiration from current design trends and am committed to honing my skills through ongoing learning and experimentation. My ultimate goal is to craft digital experiences that engage users and drive results for my clients</p>
+                                    <h3><span data-i18n="about.subtitle_prefix">I'm Younis Adel and</span> <span data-i18n="about.subtitle_highlight">Web Designer</span></h3>
+                                    <p data-i18n="about.description">As a web designer, I'm specialized in creating visually appealing websites that not only captivate visitors but also provide seamless navigation and functionality.  I continuously seek inspiration from current design trends and am committed to honing my skills through ongoing learning and experimentation. My ultimate goal is to craft digital experiences that engage users and drive results for my clients</p>
                                 </div>
                             </div>
 
@@ -77,41 +89,41 @@
                                 <div class="personal-info padd-15">
                                     <div class="row">
                                         <div class="info-item padd-15">
-                                            <p>Birthday: <span>24 Nov 1988</span></p>
+                                            <p><span data-i18n="about.birthday">Birthday</span>: <span>24 Nov 1988</span></p>
                                         </div>
 
                                         <div class="info-item padd-15">
-                                            <p>Age: <span>37</span></p>
+                                            <p><span data-i18n="about.age">Age</span>: <span>37</span></p>
                                         </div>
 
                                         <div class="info-item padd-15">
-                                            <p>Website: <span>https://anon-designe.github.io</span></p>
+                                            <p><span data-i18n="about.website">Website</span>: <span>https://anon-designe.github.io</span></p>
                                         </div>
 
                                         <div class="info-item padd-15">
-                                            <p>Email: <span>mpgyounis@gmail.com</span></p>
+                                            <p><span data-i18n="about.email">Email</span>: <span>mpgyounis@gmail.com</span></p>
                                         </div>
 
                                         <div class="info-item padd-15">
-                                            <p>Degree: <span>CS</span></p>
+                                            <p><span data-i18n="about.degree">Degree</span>: <span data-i18n="about.degree_val">CS</span></p>
                                         </div>
 
                                         <div class="info-item padd-15">
-                                            <p>Phone: <span>+306972462001</span></p>
+                                            <p><span data-i18n="about.phone">Phone</span>: <bdi class="phone-number" dir="ltr">+306972462001</bdi><br><bdi class="phone-number" dir="ltr">+306985799610</bdi></p>
                                         </div>
 
                                         <div class="info-item padd-15">
-                                            <p>City: <span>Palestine</span></p>
+                                            <p><span data-i18n="about.city">City</span>: <span data-i18n="about.city_val">Palestine</span></p>
                                         </div>
 
                                         <div class="info-item padd-15">
-                                            <p>Freelance: <span>Available</span></p>
+                                            <p><span data-i18n="about.freelance">Freelance</span>: <span data-i18n="about.freelance_val">Available</span></p>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="buttons padd-15">
-                                            <a href="#contact" class="btn hire-me" data-section-index="1">Hire me!</a>
+                                            <a href="#contact" class="btn hire-me" data-section-index="1" data-i18n="about.hire">Hire me!</a>
                                         </div>
                                     </div>
                                 </div>
@@ -162,7 +174,7 @@
 
                             <div class="row">
                                 <div class="education padd-15">
-                                    <h3 class="title">Education</h3>
+                                    <h3 class="title" data-i18n="about.education">Education</h3>
                                     <div class="row">
                                         <div class="timeline-box padd-15">
                                             <div class="timeline shadow-dark">
@@ -171,8 +183,8 @@
                                                     <h3 class="timeline-date">
                                                         <i class="fa fa-calendar"></i> 2007 - 2011
                                                     </h3>
-                                                    <h4 class="timeline-title">College of Computer Science</h4>
-                                                    <p class="timeline-text">There I learnt foundational courses and computer sciences fundamentals. In the institution, I chose my specialization in web-development that involves front-end and back-end technologies, user interface designs and content management systems.</p>
+                                                    <h4 class="timeline-title" data-i18n="about.edu1_title">College of Computer Science</h4>
+                                                    <p class="timeline-text" data-i18n="about.edu1_desc">There I learnt foundational courses and computer sciences fundamentals. In the institution, I chose my specialization in web-development that involves front-end and back-end technologies, user interface designs and content management systems.</p>
                                                 </div>
 
                                                 <div class="timeline-item">
@@ -180,8 +192,8 @@
                                                     <h3 class="timeline-date">
                                                         <i class="fa fa-calendar"></i> 2012 - 2014
                                                     </h3>
-                                                    <h4 class="timeline-title">College of Volunteer Teaching</h4>
-                                                    <p class="timeline-text">I dedicated myself to volunteer teaching, helping students and beginners learn computer science and web fundamentals. It enhanced my communication, mentoring and problem-solving skills while giving back to the community.</p>
+                                                    <h4 class="timeline-title" data-i18n="about.edu2_title">College of Volunteer Teaching</h4>
+                                                    <p class="timeline-text" data-i18n="about.edu2_desc">I dedicated myself to volunteer teaching, helping students and beginners learn computer science and web fundamentals. It enhanced my communication, mentoring and problem-solving skills while giving back to the community.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -189,17 +201,17 @@
                                 </div>
 
                                 <div class="experience padd-15">
-                                    <h3 class="title">Experience</h3>
+                                    <h3 class="title" data-i18n="about.experience">Experience</h3>
                                     <div class="row">
                                         <div class="timeline-box padd-15">
                                             <div class="timeline shadow-dark">
                                                 <div class="timeline-item">
                                                     <div class="circle-dot"></div>
                                                     <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i> 2020 - Today
+                                                        <i class="fa fa-calendar"></i> <span data-i18n="about.exp1_date">2020 - Today</span>
                                                     </h3>
-                                                    <h4 class="timeline-title">Senior Front-end Designer</h4>
-                                                    <p class="timeline-text">I can design complex software systems. My decisions impact scalability, maintainability, and overall system architecture. Also, I mentor less experienced team members, helping them grow and learn.</p>
+                                                    <h4 class="timeline-title" data-i18n="about.exp1_title">Senior Front-end Designer</h4>
+                                                    <p class="timeline-text" data-i18n="about.exp1_desc">I can design complex software systems. My decisions impact scalability, maintainability, and overall system architecture. Also, I mentor less experienced team members, helping them grow and learn.</p>
                                                 </div>
 
                                                 <div class="timeline-item">
@@ -207,8 +219,8 @@
                                                     <h3 class="timeline-date">
                                                         <i class="fa fa-calendar"></i> 2017 - 2019
                                                     </h3>
-                                                    <h4 class="timeline-title">Junior Front-end Designer</h4>
-                                                    <p class="timeline-text">I learnt to code in an existing codebase, dive into the project and understanding its structure. Also I worked closely with senior software engineers that guided me, answered my questions and helped me grow.</p>
+                                                    <h4 class="timeline-title" data-i18n="about.exp2_title">Junior Front-end Designer</h4>
+                                                    <p class="timeline-text" data-i18n="about.exp2_desc">I learnt to code in an existing codebase, dive into the project and understanding its structure. Also I worked closely with senior software engineers that guided me, answered my questions and helped me grow.</p>
                                                 </div>
 
                                                 <div class="timeline-item">
@@ -216,8 +228,8 @@
                                                     <h3 class="timeline-date">
                                                         <i class="fa fa-calendar"></i> 2014 - 2016
                                                     </h3>
-                                                    <h4 class="timeline-title">Graphic Designer</h4>
-                                                    <p class="timeline-text">I can create logos, color schemes and typography for a brand's identity. Also I develop graphics for websites, social media and digital ads with applications that enhance user experience.</p>
+                                                    <h4 class="timeline-title" data-i18n="about.exp3_title">Graphic Designer</h4>
+                                                    <p class="timeline-text" data-i18n="about.exp3_desc">I can create logos, color schemes and typography for a brand's identity. Also I develop graphics for websites, social media and digital ads with applications that enhance user experience.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -233,7 +245,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="section-title padd-15">
-                            <h2>Services</h2>
+                            <h2 data-i18n="services.title">Services</h2>
                         </div>
                     </div>
 
@@ -243,8 +255,8 @@
                                 <div class="icon">
                                     <i class="fa fa-mobile-alt"></i>
                                 </div>
-                                <h4>Web Design</h4>
-                                <p>I offer custom website designs, responsive design to ensure compatibility across devices, and UI/UX design to enhance user experience</p>
+                                <h4 data-i18n="services.s1_title">Web Design</h4>
+                                <p data-i18n="services.s1_desc">I offer custom website designs, responsive design to ensure compatibility across devices, and UI/UX design to enhance user experience</p>
                             </div>
                         </div>
 
@@ -253,8 +265,8 @@
                                 <div class="icon">
                                     <i class="fa fa-laptop-code"></i>
                                 </div>
-                                <h4>Graphic Design</h4>
-                                <p>I design logos, icons, illustrations, and other visual assets that enhance the website's branding and aesthetic appeal</p>
+                                <h4 data-i18n="services.s2_title">Graphic Design</h4>
+                                <p data-i18n="services.s2_desc">I design logos, icons, illustrations, and other visual assets that enhance the website's branding and aesthetic appeal</p>
                             </div>
                         </div>
 
@@ -263,8 +275,8 @@
                                 <div class="icon">
                                     <i class="fa fa-palette"></i>
                                 </div>
-                                <h4>Digital Marketing</h4>
-                                <p>I build websites that enhances visual aesthetics, user experience, SEO, responsive design and mainly conversion optimization</p>
+                                <h4 data-i18n="services.s3_title">Digital Marketing</h4>
+                                <p data-i18n="services.s3_desc">I build websites that enhances visual aesthetics, user experience, SEO, responsive design and mainly conversion optimization</p>
                             </div>
                         </div>
 
@@ -273,8 +285,8 @@
                                 <div class="icon">
                                     <i class="fa fa-code"></i>
                                 </div>
-                                <h4>UI/UX Solutions</h4>
-                                <p>I offer custom research and design to increase your customer satisfaction and obtain higher conversion rates</p>
+                                <h4 data-i18n="services.s4_title">UI/UX Solutions</h4>
+                                <p data-i18n="services.s4_desc">I offer custom research and design to increase your customer satisfaction and obtain higher conversion rates</p>
                             </div>
                         </div>
 
@@ -283,8 +295,8 @@
                                 <div class="icon">
                                     <i class="fa fa-search"></i>
                                 </div>
-                                <h4>Brand Consultancy</h4>
-                                <p>I build brands through cultural insights & strategic vision. Custom crafted business solution</p>
+                                <h4 data-i18n="services.s5_title">Brand Consultancy</h4>
+                                <p data-i18n="services.s5_desc">I build brands through cultural insights & strategic vision. Custom crafted business solution</p>
                             </div>
                         </div>
 
@@ -293,8 +305,8 @@
                                 <div class="icon">
                                     <i class="fa fa-bullhorn"></i>
                                 </div>
-                                <h4>Photography</h4>
-                                <p>I make high-quality photos of any category at a professional level.</p>
+                                <h4 data-i18n="services.s6_title">Photography</h4>
+                                <p data-i18n="services.s6_desc">I make high-quality photos of any category at a professional level.</p>
                             </div>
                         </div>
                     </div>
@@ -305,13 +317,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="section-title padd-15">
-                            <h2>Portfolio</h2>
+                            <h2 data-i18n="portfolio.title">Portfolio</h2>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="portfolio-heading padd-15">
-                            <h2>My Last Projects: </h2>
+                            <h2 data-i18n="portfolio.heading">My Last Projects: </h2>
                         </div>
                     </div>
 
@@ -319,10 +331,15 @@
                         <div class="portfolio-item padd-15">
                             <div class="portfolio-item-inner shadow-dark">
                                 <div class="portfolio-img">
-                                    <img src="img/portfolio-1.jpg" alt="portfolio image">
-                                    <a class="view-project" href="img/portfolio-1.jpg" target="_blank" rel="noopener">
+                                    <img src="https://anon-designe.github.io/assets/images/yemen.webp" alt="Life in Greece website">
+                                    <a class="view-project" href="https://anon-designe.github.io/greece/" target="_blank" rel="noopener">
                                         <i class="fas fa-eye"></i>
                                     </a>
+                                </div>
+                                <div class="portfolio-caption">
+                                    <h4 data-i18n="portfolio.web1_title">Life in Greece</h4>
+                                    <p data-i18n="portfolio.web1_desc">Guide about living in Greece with animations</p>
+                                    <a class="portfolio-link" href="https://anon-designe.github.io/greece/" target="_blank" rel="noopener"><span data-i18n="portfolio.visit">Visit Website</span> <i class="fa fa-external-link-alt"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -330,10 +347,15 @@
                         <div class="portfolio-item padd-15">
                             <div class="portfolio-item-inner shadow-dark">
                                 <div class="portfolio-img">
-                                    <img src="img/portfolio-2.jpg" alt="portfolio image">
-                                    <a class="view-project" href="img/portfolio-2.jpg" target="_blank" rel="noopener">
+                                    <img src="https://anon-designe.github.io/assets/images/q1.webp" alt="TV Player website">
+                                    <a class="view-project" href="https://noon-tv.vercel.app/" target="_blank" rel="noopener">
                                         <i class="fas fa-eye"></i>
                                     </a>
+                                </div>
+                                <div class="portfolio-caption">
+                                    <h4 data-i18n="portfolio.web2_title">TV Player</h4>
+                                    <p data-i18n="portfolio.web2_desc">Streaming platform, responsive on all devices</p>
+                                    <a class="portfolio-link" href="https://noon-tv.vercel.app/" target="_blank" rel="noopener"><span data-i18n="portfolio.visit">Visit Website</span> <i class="fa fa-external-link-alt"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -341,10 +363,15 @@
                         <div class="portfolio-item padd-15">
                             <div class="portfolio-item-inner shadow-dark">
                                 <div class="portfolio-img">
-                                    <img src="img/portfolio-3.jpg" alt="portfolio image">
-                                    <a class="view-project" href="img/portfolio-3.jpg" target="_blank" rel="noopener">
+                                    <img src="https://anon-designe.github.io/assets/images/IslamTime.webp" alt="Islam Time website">
+                                    <a class="view-project" href="https://anon-designe.github.io/Islam/" target="_blank" rel="noopener">
                                         <i class="fas fa-eye"></i>
                                     </a>
+                                </div>
+                                <div class="portfolio-caption">
+                                    <h4 data-i18n="portfolio.web3_title">Islam Time</h4>
+                                    <p data-i18n="portfolio.web3_desc">Prayer times with location-based calculation</p>
+                                    <a class="portfolio-link" href="https://anon-designe.github.io/Islam/" target="_blank" rel="noopener"><span data-i18n="portfolio.visit">Visit Website</span> <i class="fa fa-external-link-alt"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -352,10 +379,15 @@
                         <div class="portfolio-item padd-15">
                             <div class="portfolio-item-inner shadow-dark">
                                 <div class="portfolio-img">
-                                    <img src="img/portfolio-4.jpg" alt="portfolio image">
-                                    <a class="view-project" href="img/portfolio-4.jpg" target="_blank" rel="noopener">
+                                    <img src="https://anon-designe.github.io/assets/images/tft-company.webp" alt="TFT Company website">
+                                    <a class="view-project" href="https://anon-designe.github.io/TFT-Company/" target="_blank" rel="noopener">
                                         <i class="fas fa-eye"></i>
                                     </a>
+                                </div>
+                                <div class="portfolio-caption">
+                                    <h4 data-i18n="portfolio.web4_title">TFT Company</h4>
+                                    <p data-i18n="portfolio.web4_desc">Delivery services website across Greece</p>
+                                    <a class="portfolio-link" href="https://anon-designe.github.io/TFT-Company/" target="_blank" rel="noopener"><span data-i18n="portfolio.visit">Visit Website</span> <i class="fa fa-external-link-alt"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -363,10 +395,15 @@
                         <div class="portfolio-item padd-15">
                             <div class="portfolio-item-inner shadow-dark">
                                 <div class="portfolio-img">
-                                    <img src="img/portfolio-5.jpg" alt="portfolio image">
-                                    <a class="view-project" href="img/portfolio-5.jpg" target="_blank" rel="noopener">
+                                    <img src="https://anon-designe.github.io/assets/images/Panda.webp" alt="Panda website">
+                                    <a class="view-project" href="https://anon-designe.github.io/Panda/" target="_blank" rel="noopener">
                                         <i class="fas fa-eye"></i>
                                     </a>
+                                </div>
+                                <div class="portfolio-caption">
+                                    <h4 data-i18n="portfolio.web5_title">Panda</h4>
+                                    <p data-i18n="portfolio.web5_desc">Modern web experience with clean navigation</p>
+                                    <a class="portfolio-link" href="https://anon-designe.github.io/Panda/" target="_blank" rel="noopener"><span data-i18n="portfolio.visit">Visit Website</span> <i class="fa fa-external-link-alt"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -374,10 +411,15 @@
                         <div class="portfolio-item padd-15">
                             <div class="portfolio-item-inner shadow-dark">
                                 <div class="portfolio-img">
-                                    <img src="img/portfolio-6.jpg" alt="portfolio image">
-                                    <a class="view-project" href="img/portfolio-6.jpg" target="_blank" rel="noopener">
+                                    <img src="https://anon-designe.github.io/assets/images/falconx.webp" alt="Falcon X website">
+                                    <a class="view-project" href="https://anon-designe.github.io/falcon.x" target="_blank" rel="noopener">
                                         <i class="fas fa-eye"></i>
                                     </a>
+                                </div>
+                                <div class="portfolio-caption">
+                                    <h4 data-i18n="portfolio.web6_title">Falcon X</h4>
+                                    <p data-i18n="portfolio.web6_desc">Software solutions for Windows & Android</p>
+                                    <a class="portfolio-link" href="https://anon-designe.github.io/falcon.x" target="_blank" rel="noopener"><span data-i18n="portfolio.visit">Visit Website</span> <i class="fa fa-external-link-alt"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -389,41 +431,41 @@
                 <div class="container">
                     <div class="row">
                         <div class="section-title padd-15">
-                            <h2>Contact</h2>
+                            <h2 data-i18n="contact.title">Contact</h2>
                         </div>
                     </div>
 
-                    <h3 class="contact-title padd-15">Any Question? Contact us!</h3>
-                    <h4 class="contact-subtitle padd-15">I'm at your service</h4>
+                    <h3 class="contact-title padd-15" data-i18n="contact.question">Any Question? Contact us!</h3>
+                    <h4 class="contact-subtitle padd-15" data-i18n="contact.subtitle">I'm at your service</h4>
 
                     <div class="row">
                         <div class="contact-info-item padd-15">
                             <div class="icon"><i class="fa fa-phone"></i></div>
-                            <h4>Call us on</h4>
-                            <p><a href="tel:+306972462001" style="color: inherit; text-decoration: none;">+30 697 246 2001</a></p>
+                            <h4 data-i18n="contact.call">Call us on</h4>
+                            <p><a href="tel:+306972462001" style="color: inherit; text-decoration: none;"><bdi class="phone-number" dir="ltr">+30 697 246 2001</bdi></a><br><a href="tel:+306985799610" style="color: inherit; text-decoration: none;"><bdi class="phone-number" dir="ltr">+30 698 579 9610</bdi></a></p>
                         </div>
 
 
                         <div class="contact-info-item padd-15">
                             <div class="icon"><i class="fa fa-map-marker-alt"></i></div>
-                            <h4>Address</h4>
-                            <p>Athens, Greece</p>
+                            <h4 data-i18n="contact.address">Address</h4>
+                            <p data-i18n="contact.address_val">Athens, Greece</p>
                         </div>
 
                         <div class="contact-info-item padd-15">
                             <div class="icon"><i class="fa fa-envelope"></i></div>
-                            <h4>Email</h4>
+                            <h4 data-i18n="contact.email">Email</h4>
                             <p><a href="mailto:mpgyounis@gmail.com" style="color: inherit; text-decoration: none;">mpgyounis@gmail.com</a></p>
                         </div>
 
                         <div class="contact-info-item padd-15">
                             <div class="icon"><i class="fa fa-globe"></i></div>
-                            <h4>Website</h4>
+                            <h4 data-i18n="contact.website">Website</h4>
                             <p><a href="https://anon-designe.github.io" target="_blank" style="color: inherit; text-decoration: none;">https://anon-designe.github.io</a></p>
                         </div>
                     </div>
 
-                    <h3 class="contact-title padd-15">You can follow me or contact me on the following platforms:</h3>
+                    <h3 class="contact-title padd-15" data-i18n="contact.follow">You can follow me or contact me on the following platforms:</h3>
 <!-- From Uiverse.io by anon_2952 -->
 <ul class="wrapper">
     <li class="icon Whatsapp" onclick="window.open('https://api.whatsapp.com/send?phone=306972462001&text=', '_blank')">
@@ -624,7 +666,7 @@
             <i class="fas fa-sun"></i>
         </div>
 
-        <h4>Theme Colors</h4>
+        <h4 data-i18n="theme.colors">Theme Colors</h4>
 
         <div class="colors">
             <span class="color-1" onclick="setActiveStyle('color-1')"></span>
