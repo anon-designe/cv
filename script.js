@@ -1,16 +1,26 @@
-/* Toggle Style Switcher */
+/* Toggle Style Switcher (buttons fixed in aside below language menu) */
 
-const styleSwitcherToggle = document.querySelector('.style-switcher-toggler');
+const styleSwitcherToggle = document.querySelector('#asideStyleToggler') || document.querySelector('.style-switcher-toggler');
 const styleSwitcher = document.querySelector('.style-switcher');
 
-styleSwitcherToggle.addEventListener('click', () => {
-    styleSwitcher.classList.toggle('open');
-});
+if (styleSwitcherToggle && styleSwitcher) {
+    styleSwitcherToggle.addEventListener('click', () => {
+        styleSwitcher.classList.toggle('open');
+    });
+}
 
 window.addEventListener('scroll', () => {
     if(styleSwitcher.classList.contains('open')) {
         styleSwitcher.classList.remove('open');
     }
+});
+// Inner sections scroll instead of window in this layout - close panel there too
+document.querySelectorAll('.section').forEach(sec => {
+    sec.addEventListener('scroll', () => {
+        if (styleSwitcher && styleSwitcher.classList.contains('open')) {
+            styleSwitcher.classList.remove('open');
+        }
+    });
 });
 
 const alternateStyles = document.querySelectorAll('.alternate-style');
@@ -22,27 +32,45 @@ function setActiveStyle(color) {
             style.setAttribute('disabled', 'true');
         }
     });
+    // Auto-hide the panel after choosing a theme (mobile & desktop)
+    const sw = document.querySelector('.style-switcher');
+    if (sw) sw.classList.remove('open');
 }
 
-/* Dark/Light Mode */
+/* Dark/Light Mode (button fixed in aside below language menu) */
 
-const dayNight = document.querySelector('.day-night');
+const dayNight = document.querySelector('#asideDayNight') || document.querySelector('.day-night');
+const dayNightFallback = document.querySelector('.day-night');
 
 function setDayNightIcon() {
-    const icon = dayNight.querySelector('i');
-    if (document.body.classList.contains('dark')) {
-        icon.classList.add('fa-sun');
-        icon.classList.remove('fa-moon');
-    } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-    }
+    const icons = [];
+    const mainIcon = dayNight ? dayNight.querySelector('i') : null;
+    if (mainIcon) icons.push(mainIcon);
+    const fallbackIcon = dayNightFallback && dayNightFallback !== dayNight ? dayNightFallback.querySelector('i') : null;
+    if (fallbackIcon) icons.push(fallbackIcon);
+    icons.forEach(icon => {
+        if (document.body.classList.contains('dark')) {
+            icon.classList.add('fa-sun');
+            icon.classList.remove('fa-moon');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    });
 }
 
-dayNight.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    setDayNightIcon();
-});
+if (dayNight) {
+    dayNight.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        setDayNightIcon();
+    });
+}
+if (dayNightFallback && dayNightFallback !== dayNight) {
+    dayNightFallback.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        setDayNightIcon();
+    });
+}
 
 window.addEventListener('load', setDayNightIcon);
 
@@ -57,7 +85,6 @@ en: {
     "nav.contact": "Contact",
     "home.hello": "Hello, my name is",
     "home.name": "Younis Adel",
-    "home.profession_prefix": "I'm a",
     "home.description": "I'm a web designer with extensive experience for over 10 years. My experience is to create website designs, graphic designs and much more...",
     "home.open_cv": "Open My CV",
     "home.website": "WebSite",
@@ -138,7 +165,6 @@ ar: {
     "nav.contact": "اتصل بي",
     "home.hello": "مرحباً، اسمي",
     "home.name": "يونس عادل",
-    "home.profession_prefix": "أنا",
     "home.description": "أنا مصمم ويب بخبرة واسعة تتجاوز 10 سنوات. خبرتي في إنشاء تصاميم المواقع والتصاميم الجرافيكية والكثير غيرها...",
     "home.open_cv": "افتح سيرتي الذاتية",
     "home.website": "الموقع الإلكتروني",
@@ -233,6 +259,17 @@ function setLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('site-lang', lang);
 
+    // Close floating panels first so they don't animate across the screen on dir change
+    const sw = document.querySelector('.style-switcher');
+    if (sw) sw.classList.remove('open');
+    const _dropup = document.getElementById('langDropup');
+    if (_dropup) _dropup.classList.remove('open');
+    const _toggle = document.getElementById('langToggle');
+    if (_toggle) _toggle.setAttribute('aria-expanded', 'false');
+
+    // Disable all transitions/animations during dir flip to avoid unprofessional sliding
+    document.documentElement.classList.add('no-anim');
+
     document.documentElement.setAttribute('lang', lang);
     document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
     document.title = lang === 'ar' ? 'Anon Design - السيرة الذاتية' : 'Anon Design - CV';
@@ -250,6 +287,13 @@ function setLanguage(lang) {
 
     const langCurrent = document.querySelector('.lang-current');
     if (langCurrent) { langCurrent.textContent = lang === 'ar' ? 'عربي' : 'EN'; }
+
+    // Force reflow then re-enable transitions so the dir flip applies instantly
+    void document.body.offsetWidth;
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => document.documentElement.classList.remove('no-anim'));
+    });
+    setTimeout(() => document.documentElement.classList.remove('no-anim'), 100);
 
     initTyped(lang);
 }

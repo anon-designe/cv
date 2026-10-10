@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&display=swap');
 
 
 :root {
@@ -49,6 +50,11 @@ html {
 
 *{ margin: 0; padding: 0; outline: none; text-decoration: none; box-sizing: border-box; }
 ::before, ::after { box-sizing: border-box; }
+/* Instant dir flip: suppress all transitions/animations while switching languages */
+html.no-anim, html.no-anim *, html.no-anim *::before, html.no-anim *::after {
+    transition: none !important;
+    animation: none !important;
+}
 ul { list-style: none; }
 body { line-height: 1.5; font-size: 16px; font-family: 'Poppins', sans-serif; }
 .section { 
@@ -155,7 +161,7 @@ body { line-height: 1.5; font-size: 16px; font-family: 'Poppins', sans-serif; }
                 right: 0; 
             }
             .aside .logo a span { font-family: 'Clicker Script', cursive; font-size: 40px; }
-    .aside .nav { margin-top: 50px; }
+    .aside .nav { margin-top: 50px; margin-bottom: 70px; width: 100%; }
         .aside .nav li { margin-bottom: 20px; display: block; }
             .aside .nav li a { font-size: 16px; font-weight: 600; display: block; color: var(--text-black900); padding: 5px 15px; border-bottom: 1px solid var(--bg-black50); }
                 .aside .nav li a.active { color: var(--skin-color); }
@@ -202,8 +208,16 @@ body { line-height: 1.5; font-size: 16px; font-family: 'Poppins', sans-serif; }
 
 .home { min-height: 100vh; display: flex; color: var(--text-black900); }
     .home .home-info { flex: 0 0 60%; max-width: 60%; }
-        h3.hello { font-size: 28px; margin: 15px 0; }
-            h3.hello span { font-family: 'Clicker Script', cursive; font-size: 30px; font-weight: 700; color: var(--skin-color); }
+        h3.hello { font-family: 'Poppins', 'Cairo', sans-serif; font-size: 27px; font-weight: 600; margin: 15px 0; letter-spacing: .3px; color: var(--text-black900); }
+            h3.hello .name {
+                font-family: 'Playfair Display', 'Cairo', serif;
+                font-size: 38px;
+                font-weight: 800;
+                color: var(--skin-color);
+                letter-spacing: .5px;
+                line-height: 1.2;
+                text-shadow: 0 2px 12px rgba(0,0,0,.12);
+            }
         h3.profession { font-size: 30px; margin: 15px 0; }
             .typing { color: var(--skin-color); }
         .home-info p { margin-bottom: 70px; font-size: 20px; color: var(--text-black700); }
@@ -528,10 +542,13 @@ body { line-height: 1.5; font-size: 16px; font-family: 'Poppins', sans-serif; }
 
 @media (max-width: 1199px) {
 
-    .aside { left: -270px; }
+    .aside { left: -270px; justify-content: flex-start; padding-top: 110px; overflow-y: auto; }
         .aside.open { left: 0; }
         .aside .nav-toggler { display: flex; left: 30px; }
             .aside .nav-toggler.open { left: 300px; }
+        /* Raise page buttons above the language list with clear gap */
+        .aside .nav { margin-top: 10px; width: 100%; padding-bottom: 170px; }
+        .aside .nav li { margin-bottom: 14px; }
     .section { left: 0; }
         .section.open { left: 270px; }
         .section .container { padding-top: 70px; }
@@ -561,7 +578,7 @@ body { line-height: 1.5; font-size: 16px; font-family: 'Poppins', sans-serif; }
     .contact .contact-info-item { flex: 0 0 100%; max-width: 100%; }
 }
 
-/* Style Switcher */
+/* Style Switcher (panel only - toggled from aside buttons below language menu) */
 
 .style-switcher {
     position: fixed;
@@ -577,34 +594,70 @@ body { line-height: 1.5; font-size: 16px; font-family: 'Poppins', sans-serif; }
     transform: translateX(100%);
 }
     .style-switcher.open { transform: translateX(-25px); }
-    .style-switcher .s-icon {
-        position: absolute;
-        height: 40px;
-        width: 40px;
-        text-align: center;
-        font-size: 20px;
-        background: var(--bg-black100);
-        color: var(--text-black900);
-        right: 100%;
-        border: 1px solid var(--bg-black50);
-        margin-right: 25px;
-        cursor: pointer;
-        transition: all .3s ease;
-        border-radius: 50%;
-        box-shadow: 0 0 10px rgba(48, 46, 77, .2);
-    }
-        .style-switcher .s-icon i { line-height: 40px; }
-        .style-switcher .s-icon:hover { background: var(--skin-color); color: #fff; border-color: var(--skin-color); }
-    .style-switcher .style-switcher-toggler { top: 0; }
-    .style-switcher .day-night { top: 55px; }
     .style-switcher h4 { margin: 0 0 10px; color: var(--text-black700); font-size: 16px; font-weight: 600; text-transform: capitalize; }
     .style-switcher .colors { display: flex; flex-wrap: wrap; justify-content: space-between; }
-        .style-switcher .colors span { display: inline-block; height: 30px; width: 30px; border-radius: 50%; }
+        .style-switcher .colors span { display: inline-block; height: 30px; width: 30px; border-radius: 50%; cursor: pointer; }
     .style-switcher .color-1 { background: #EC1839; }
     .style-switcher .color-2 { background: #FA5B0F; }
     .style-switcher .color-3 { background: #37B182; }
     .style-switcher .color-4 { background: #1854B4; }
     .style-switcher .color-5 { background: #F021B2; }
+
+/* Mobile: themes panel as professional centered bottom-sheet */
+@media (max-width: 1199px) {
+    .style-switcher {
+        top: auto;
+        bottom: 20px;
+        right: auto;
+        left: 50%;
+        width: min(320px, calc(100vw - 30px));
+        border-radius: 16px;
+        padding: 18px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, .3);
+        transform: translate(-50%, 150%);
+        opacity: 0;
+        visibility: hidden;
+    }
+    .style-switcher.open {
+        transform: translate(-50%, 0);
+        opacity: 1;
+        visibility: visible;
+    }
+    .style-switcher h4 { text-align: center; }
+    .style-switcher .colors { justify-content: center; gap: 12px; }
+    .style-switcher .colors span { height: 38px; width: 38px; }
+    html[dir="rtl"] .style-switcher {
+        right: auto;
+        left: 50%;
+        transform: translate(-50%, 150%);
+    }
+    html[dir="rtl"] .style-switcher.open { transform: translate(-50%, 0); }
+}
+
+/* Aside fixed tools BELOW language menu (language on top, buttons at bottom) */
+.aside-tools {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.aside-icon-btn {
+    height: 40px;
+    width: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: var(--bg-black100);
+    color: var(--text-black900);
+    border: 1px solid var(--bg-black50);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .3s ease;
+    box-shadow: 0 0 10px rgba(48, 46, 77, .2);
+}
+.aside-icon-btn:hover { background: var(--skin-color); color: #fff; border-color: var(--skin-color); }
 
 /* Create more 5 css files to enable Toggle style Switcher */
 
@@ -732,10 +785,10 @@ color-5.css
     transition: box-shadow 0.2s ease-in;
 }
 
-/* Language Switcher - Dropup */
+/* Language Switcher - Dropup (above aside tools) */
 .language-switcher {
     position: absolute;
-    bottom: 30px;
+    bottom: 105px;
 }
 .language-switcher .lang-toggle {
     display: flex;
@@ -896,16 +949,16 @@ html[dir="rtl"] .style-switcher {
     transform: translateX(-100%);
 }
 html[dir="rtl"] .style-switcher.open { transform: translateX(25px); }
-html[dir="rtl"] .style-switcher .s-icon {
-    right: auto;
-    left: 100%;
-    margin-right: 0;
-    margin-left: 25px;
-}
 html[dir="rtl"] .home-info p,
 html[dir="rtl"] .about .about-content .about-text p,
 html[dir="rtl"] .about .about-content .timeline .timeline-text {
     text-align: right;
+}
+html[dir="rtl"] h3.hello { font-family: 'Cairo', sans-serif; }
+html[dir="rtl"] h3.hello .name {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 900;
+    letter-spacing: 0;
 }
 html[dir="rtl"] .buttons-container { flex-direction: row-reverse; justify-content: flex-end; }
 html[dir="rtl"] .website-btn { margin-left: 0; margin-right: 10px; }
