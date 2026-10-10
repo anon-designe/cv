@@ -391,18 +391,34 @@ document.querySelector('.hire-me').addEventListener('click', function(){
     addBackSection(sectionIndex);
 })
 
-/* Activating Mobile Menu */
+/* Activating Mobile Menu - overlay drawer with backdrop */
 
 const navTogglerBtn = document.querySelector('.nav-toggler');
 const aside = document.querySelector('.aside');
+const asideBackdrop = document.getElementById('asideBackdrop');
 
 navTogglerBtn.addEventListener('click', () => { asideSectionTogglerBtn(); })
 
 function asideSectionTogglerBtn(){
     aside.classList.toggle('open');
     navTogglerBtn.classList.toggle('open');
+    document.body.classList.toggle('menu-open', aside.classList.contains('open'));
     for(let i = 0; i < totalSection; i++) { allSection[i].classList.toggle('open'); }
 }
+
+function closeMobileMenu(){
+    aside.classList.remove('open');
+    navTogglerBtn.classList.remove('open');
+    document.body.classList.remove('menu-open');
+    for(let i = 0; i < totalSection; i++) { allSection[i].classList.remove('open'); }
+}
+
+if (asideBackdrop) {
+    asideBackdrop.addEventListener('click', closeMobileMenu);
+}
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && aside.classList.contains('open')) closeMobileMenu();
+});
 
 /* Services Animation */
 const serviceItems = document.querySelectorAll('.service .service-item');

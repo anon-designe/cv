@@ -542,16 +542,41 @@ body { line-height: 1.5; font-size: 16px; font-family: 'Poppins', sans-serif; }
 
 @media (max-width: 1199px) {
 
-    .aside { left: -270px; justify-content: flex-start; padding-top: 110px; overflow-y: auto; }
-        .aside.open { left: 0; }
+    .aside { left: -270px; justify-content: flex-start; padding-top: 215px; overflow-y: auto; border-right: none; scrollbar-width: none; }
+        .aside::-webkit-scrollbar { display: none; width: 0; }
+        .aside.open {
+            left: 0;
+            box-shadow: 20px 0 60px rgba(0, 0, 0, .35);
+            border-radius: 0 22px 22px 0;
+            border: 2px solid transparent;
+            /* Gradient frame: solid on the outer edge, fading toward the inside - follows the rounded corners */
+            background:
+                linear-gradient(var(--bg-black100), var(--bg-black100)) padding-box,
+                linear-gradient(to left, var(--skin-color), transparent 55%) border-box;
+        }
         .aside .nav-toggler { display: flex; left: 30px; }
             .aside .nav-toggler.open { left: 300px; }
         /* Raise page buttons above the language list with clear gap */
         .aside .nav { margin-top: 10px; width: 100%; padding-bottom: 170px; }
         .aside .nav li { margin-bottom: 14px; }
+    /* Overlay mode: content stays fixed, drawer slides above it */
     .section { left: 0; }
-        .section.open { left: 270px; }
+        .section.open { left: 0; }
         .section .container { padding-top: 70px; }
+
+    /* Dim + blur backdrop behind the open menu */
+    .aside-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .55);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .3s ease, visibility .3s ease;
+        z-index: 9;
+    }
+    body.menu-open .aside-backdrop { opacity: 1; visibility: visible; }
 
     .home-img::before, .home-img::after { display: none; }
 
@@ -576,6 +601,9 @@ body { line-height: 1.5; font-size: 16px; font-family: 'Poppins', sans-serif; }
 @media (max-width: 460px) {
 
     .contact .contact-info-item { flex: 0 0 100%; max-width: 100%; }
+    /* Keep the close (X) button inside the viewport on very small phones */
+    .aside .nav-toggler.open { left: auto; right: 15px; }
+    html[dir="rtl"] .aside .nav-toggler.open { right: auto; left: 15px; }
 }
 
 /* Style Switcher (panel only - toggled from aside buttons below language menu) */
@@ -658,6 +686,12 @@ body { line-height: 1.5; font-size: 16px; font-family: 'Poppins', sans-serif; }
     box-shadow: 0 0 10px rgba(48, 46, 77, .2);
 }
 .aside-icon-btn:hover { background: var(--skin-color); color: #fff; border-color: var(--skin-color); }
+
+/* Backdrop hidden on desktop, used as overlay in mobile drawer mode */
+.aside-backdrop { display: none; }
+@media (max-width: 1199px) {
+    .aside-backdrop { display: block; }
+}
 
 /* Create more 5 css files to enable Toggle style Switcher */
 
@@ -965,10 +999,10 @@ html[dir="rtl"] .website-btn { margin-left: 0; margin-right: 10px; }
 html[dir="rtl"] h3.hello span { letter-spacing: 0; }
 
 @media (max-width: 1199px) {
-    html[dir="rtl"] .aside { right: -270px; left: auto; }
-    html[dir="rtl"] .aside.open { right: 0; }
+    html[dir="rtl"] .aside { right: -270px; left: auto; border-right: none; border-left: none; }
+    html[dir="rtl"] .aside.open { right: 0; box-shadow: -20px 0 60px rgba(0, 0, 0, .35); border-radius: 22px 0 0 22px; border: 2px solid transparent; background: linear-gradient(var(--bg-black100), var(--bg-black100)) padding-box, linear-gradient(to right, var(--skin-color), transparent 55%) border-box; }
     html[dir="rtl"] .aside .nav-toggler { left: auto; right: 30px; }
     html[dir="rtl"] .aside .nav-toggler.open { right: 300px; left: auto; }
     html[dir="rtl"] .section { right: 0; }
-    html[dir="rtl"] .section.open { right: 270px; left: 0; }
+    html[dir="rtl"] .section.open { right: 0; left: 0; }
 }
